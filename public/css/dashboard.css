@@ -1,0 +1,236 @@
+:root {
+    --primary-red: #ff3a3a;
+    --dark-black: #1a1a1a;
+    --light-black: #2d2d2d;
+}
+
+body {
+    background-color: var(--dark-black);
+    color: white;
+}
+
+.navbar {
+    background-color: var(--dark-black) !important;
+    border-bottom: 2px solid var(--primary-red);
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: var(--primary-red) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.btn-primary:hover {
+    background-color: #ff1a1a;
+    border-color: #ff1a1a;
+}
+
+.hero-section {
+    background-color: var(--light-black);
+    padding: 4rem 0;
+}
+
+.card {
+    background-color: var(--light-black);
+    border: 1px solid var(--primary-red);
+    color: white;
+}
+
+.product-card {
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.section-title {
+    color: var(--primary-red);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.price {
+    color: var(--primary-red);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.footer {
+    background-color: var(--dark-black);
+    border-top: 2px solid var(--primary-red);
+}
+/* .modal-dialog {
+max-width: 1100px !important;
+} */
+
+.modal-content {
+background-color: var(--dark-black);
+color: white;
+min-height: auto;
+}
+
+.modal-header {
+border-bottom: none;
+padding: 1.5rem;
+}
+
+/* Lista de hamburguesas */
+.burger-list {
+background-color: var(--dark-black);
+min-height: auto;
+width: 20%;
+}
+
+.burger-item {
+padding: 15px;
+cursor: pointer;
+transition: all 0.3s;
+opacity: 0.7;
+}
+
+.burger-item:hover {
+background-color: var(--light-black);
+}
+
+.burger-item.active {
+opacity: 1;
+background-color: var(--light-black);
+padding-left: 19px;
+}
+
+/* Sección de imagen */
+.burger-image-section {
+width: 40%;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+background-color: var(--light-black);
+}
+
+.burger-image-container {
+position: relative;
+}
+
+.burger-image {
+width: 100%;
+max-width: 400px;
+margin: 0 auto;
+display: block;
+}
+
+.ingredient-label {
+position: absolute;
+background-color: var(--primary-red);
+color: white;
+padding: 5px 10px;
+border-radius: 15px;
+font-size: 0.8em;
+white-space: nowrap;
+}
+
+/* Detalles y opciones */
+.burger-details {
+width: 40%;
+background-color: var(--light-black);
+height: 500px;
+overflow-y: auto;
+}
+
+.burger-details-wrapper {
+padding: 20px;
+}
+
+.details-content {
+text-align: center;
+margin-top: 280px;
+margin-bottom: 30px;
+
+}
+
+
+.addon-section {
+margin-bottom: 20px;
+}
+
+.addon-section h4 {
+color: var(--primary-red);
+margin-bottom: 15px;
+}
+
+.addon-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px;
+margin-bottom: 5px;
+}
+
+.addon-item label {
+margin-left: 10px;
+flex-grow: 1;
+}
+
+.addon-price {
+color: var(--primary-red);
+}
+
+.instructions {
+width: 100%;
+background-color: var(--dark-black);
+border: 1px solid rgba(255,255,255,0.1);
+color: white;
+padding: 10px;
+margin: 10px 0;
+min-height: 100px;
+border-radius: 5px;
+}
+
+.price-tag {
+font-size: 24px;
+color: var(--primary-red);
+margin: 20px 0;
+}
+
+.order-button {
+background-color: var(--primary-red);
+color: white;
+border: none;
+padding: 15px 30px;
+border-radius: 5px;
+width: 100%;
+margin-top: 20px;
+font-size: 1.2em;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.order-button:hover {
+background-color: #ff2020;
+}
+
+/* Estilizar la barra de scroll */
+.burger-details::-webkit-scrollbar {
+width: 8px;
+}
+
+.burger-details::-webkit-scrollbar-track {
+background: var(--dark-black);
+}
+
+.burger-details::-webkit-scrollbar-thumb {
+background: var(--primary-red);
+border-radius: 4px;
+}
+
+.burger-details::-webkit-scrollbar-thumb:hover {
+background: #ff2020;
+}
