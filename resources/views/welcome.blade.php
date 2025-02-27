@@ -36,9 +36,9 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <button class="btn btn-primary me-2">
+                    <a class="btn btn-primary me-2" href="{{ url('/login')}}">
                         <i class="bi bi-cart"></i> Ordenar Ahora
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

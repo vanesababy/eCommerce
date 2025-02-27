@@ -1,0 +1,224 @@
+.moveteput{
+    margin-right: 70%
+}
+
+
+/* Utiliza Bootstrap para el container pero mantiene los valores originales */
+/* .container {
+    max-width: 1200px;
+    padding: 90px;
+} */
+
+/* Mantiene completamente el estilo original del formulario */
+.form_container {
+    width: 75%;
+    /* max-width: 450px; */
+    /* margin: -90px 760px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: 10px; */
+    padding: 40px 30px;
+    background-color: #1e1e1e;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    color: #fff;
+}
+
+.logo_container {
+    width: 100px;
+    height: 100px;
+    background-color: #1e1e1e;
+    border: 2px solid #e50000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    animation: burger-float 3s ease-in-out infinite;
+}
+
+.logo_container:before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 10px;
+    background-color: #e50000;
+    border-radius: 5px;
+    top: 35px;
+}
+
+.logo_container:after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 10px;
+    background-color: #ffc045;
+    border-radius: 5px;
+    top: 50px;
+}
+
+.title_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: #bbbbbb;
+    max-width: 90%;
+}
+
+.input_container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* gap: 8px; */
+}
+
+.icon {
+    width: 22px;
+    position: absolute;
+    z-index: 99;
+    left: 14px;
+    bottom: 12px;
+    opacity: 0.8;
+}
+/*     
+.input_label {
+    font-size: 0.9rem;
+    color: #cccccc;
+    font-weight: 600;
+    margin-left: 4px;
+} */
+
+.input_field {
+    /* width: 100%; */
+    height: 45px;
+    padding: 0 0 0 50px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #3a3a3a;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.input_field:focus {
+    border: 1px solid #e50000;
+    box-shadow: 0 0 10px rgba(229, 0, 0, 0.3);
+}
+
+.sign-in_btn {
+    margin-top: 20px!important;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    background: #e50000;
+    border-radius: 8px;
+    outline: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sign-in_btn:hover {
+    background: #ff1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(229, 0, 0, 0.3);
+}
+
+.separator {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #666666;
+    margin: 10px 0;
+}
+
+.separator .line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background-color: #3a3a3a;
+}
+
+.sign-google {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #2a2a2a;
+    border-radius: 8px;
+    outline: none;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.sign-google:hover {
+    background: #333333;
+    border-color: #444444;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.note {
+    font-size: 0.8rem;
+    color: #666666;
+    text-decoration: underline;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.note:hover {
+    color: #e50000;
+}
+
+svg path {
+    stroke: #999999;
+}
+
+@keyframes burger-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Bootstrap override para el checkbox de Remember Me */
+.form-check-input:checked {
+    background-color: #e50000;
+    border-color: #e50000;
+}
