@@ -19,6 +19,18 @@
         overflow: hidden; /* Evita que el contenido se salga */
     }
 </style>
+@if(session('success'))
+<script>
+    Swal.fire({
+        toast: true,
+        position: 'top-start',
+        icon: 'success',
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 3000
+    });
+</script>
+@endif
 
     {{-- <p>¡Hola dede hamburgesa!</p>
     <p>Esta es la página de inicio para su cuenta.</p>
@@ -26,18 +38,18 @@
 
     <div class="container-fluid py-3">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4>Agregar Nueva Hamburguesa</h4>
+            <h4>Agregar Nueva producto</h4>
             <div>
                 <button class="btn btn-outline-secondary me-2">
                     <i class="fas fa-save"></i> Guardar Borrador
                 </button>
                 <button class="btn btn-success">
-                    <i class="fas fa-check"></i> Agregar Hamburguesa
+                    <i class="fas fa-check"></i> Agregar producto
                 </button>
             </div>
         </div>
         
-        <form method="POST" action="{{ url('crearHamburguesa') }}">
+        <form method="POST" action="{{ url('crearProducto') }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -45,25 +57,60 @@
                         <div class="card-header">
                             <h5 class="card-title">Información General</h5>
                         </div>
+                        
                         <div class="card-body">
                             <div class="mb-3">
-                                <label for="burgerName" class="form-label">Nombre de la Hamburguesa</label>
-                                <input type="text" class="form-control" name="nombre_hamburguesa" id="burgerName" placeholder="Ingrese el nombre de la hamburguesa">
+                                <label for="categoria" class="form-label d-block">Seleccione una categoría</label>
+                                <select name="id_categoria" id="categoria" class="form-select w-100">
+                                    <option value="" selected>Seleccione una opción</option> <!-- Opción predeterminada -->
+                                    @foreach($categorias as $c)
+                                        <option value="{{ $c->id }}">{{ $c->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                            
+                            
+                            
+                            <div class="mb-3">
+                                <label for="burgerName" class="form-label">Nombre de la producto</label>
+                                <input type="text" class="form-control" name="nombre_producto" id="burgerName" placeholder="Ingrese el nombre de la producto">
                             </div>
                             <div class="mb-3">
-                                <label for="burgerName" class="form-label">Precio de la Hamburguesa</label>
-                                <input type="text" class="form-control" name="precio_hamburguesa" id="burgerName" placeholder="Ingrese el precio de la hamburguesa">
+                                <label for="burgerName" class="form-label">Precio de la producto</label>
+                                <input type="text" class="form-control" name="precio_producto" id="burgerName" placeholder="Ingrese el precio de la producto">
                             </div>
                             
                             <div class="mb-3">
-                                <label for="burgerDescription" class="form-label">Descripción de la Hamburguesa</label>
-                                <textarea class="form-control" name="descripcion_hamburguesa" id="burgerDescription" rows="4" placeholder="Descripción detallada..."></textarea>
+                                <label for="burgerDescription" class="form-label">Descripción de la producto</label>
+                                <textarea class="form-control" name="descripcion_producto" id="burgerDescription" rows="4" placeholder="Descripción detallada..."></textarea>
                             </div>
                             
+                            <div class="mb-3">
+                                <label for="stock" class="form-label">Stock del producto</label>
+                                <input type="number" class="form-control" name="stock" id="stock" min="0" placeholder="Ingrese la cantidad disponible">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Características del producto</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="caracteristicas[]" value="nuevo" id="checkNuevo">
+                                    <label class="form-check-label" for="checkNuevo">Producto Nuevo</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="caracteristicas[]" value="destacado" id="checkDestacado">
+                                    <label class="form-check-label" for="checkDestacado">Producto Destacado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="caracteristicas[]" value="oferta" id="checkOferta">
+                                    <label class="form-check-label" for="checkOferta">En Oferta</label>
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <label class="form-label">Disponibilidad</label>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="disponibilidad" type="radio" name="availability" id="availabilityYes" value="yes">
+                                    <input class="form-check-input" name="disponibilidad" type="radio" name="availability" id="availabilityYes" value="si">
                                     <label class="form-check-label" for="availabilityYes">Sí</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -94,7 +141,7 @@
             </div>
 
             <button type="submit">
-                crear hamburguesa
+                crear producto
             </button>
             
         </form>
@@ -113,6 +160,15 @@
                 reader.readAsDataURL(file);
             }
         });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var toastEl = document.getElementById('toastSuccess');
+        if (toastEl) {
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+    });
+
 
     </script>
 @stop

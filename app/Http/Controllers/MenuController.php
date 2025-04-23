@@ -2,53 +2,81 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class MenuController extends Controller
 {
-    public function listaHamburguesas()
+    public function listaCategorias()
     {
-        return view('menu.hamburguesas.index');
+        $categorias = DB::table('categorias') 
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        
+        return view('Categorias.index', compact('categorias'));
     }
-    public function vistaCrearHamburguesas()
+
+    public function vistaCrearCategorias()
     {
-        return view('menu.hamburguesas.create');
+        return view('Categorias.create');
     }
-    public function craerHamburguesa(Request $request){
-        // dd('aaaa');
-        dd($request->all());
-        $nombrehamburguesa = $request->input('nombre_hamburguesa');
-        $descripcion = $request->input('descripcion_hamburguesa');
-        $precio = $request->input('precio_hamburguesa');
-        $disponibilidad = $request->input('disponibilidad');
-        $imagen = $request->input('imagen');
-
-        $nombreHamburguesa = Str::slug($request->input('nombre_hamburguesa'), '-');
-
-        // Subir la imagen con el nombre formateado en la carpeta hamburguesas
-        if ($request->hasFile('imagen')) {
-            $extension = $request->file('imagen')->getClientOriginalExtension();
-            $fileName = $nombreHamburguesa . '.' . $extension; // ejemplo: big-mac.jpg
-            $path = $request->file('imagen')->storeAs('public/hamburguesas', $fileName);
-        } else {
-            $fileName = null;
-        }
-
-        // Guardar en la base de datos
-        DB::table('hamburguesas')->insert([
-            'nombre' => $request->input('nombre_hamburguesa'),
-            'descripcion' => $request->input('descripcion_hamburguesa'),
-            'precio' => $request->input('precio_hamburguesa'),
-            'disponibilidad' => $request->input('disponibilidad'),
-            'imagen' => $fileName,
+  
+    public function crearCategorias(Request $request)
+    {
+       
+        DB::table('Categorias')->insert([
+            'nombre' => $request->input('nombre_categoria'),
+            'descripcion' => $request->input('descripcion_categoria'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
+    
+        return redirect('vista-categorias')->with('success', 'Categoria creada con éxito.');
+    }
 
-        return redirect()->back()->with('success', 'Hamburguesa creada con éxito.');
+    public function editarCategoria($id)
+    {
+        $categorias = DB::table('categorias')->where('id', $id)->first();
+        
+        if (!$categorias) {
+            return redirect('vista-categorias')->with('error', 'Categoria no encontrada');
+        }
+        
+        return view('Categorias.editar', compact('categorias'));
+    }
+    
+    public function actualizarCategoria(Request $request, $id)
+    {
+        $request->validate([
+            'Nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+        ]);
+        
+        $hamburguesa = DB::table('categorias')->where('id', $id)->first();
+        
+        if (!$hamburguesa) {
+            return redirect('vista-categorias')->with('error', 'Hamburguesa no encontrada');
+        }
+        
+        $datosActualizar = [
+            'Nombre' => $request->Nombre,
+            'descripcion' => $request->descripcion,
+            'updated_at' => now(),
+        ];
+        
+        DB::table('Categorias')
+            ->where('id', $id)
+            ->update($datosActualizar);
+        
+        return redirect('vista-categorias')->with('success', 'Categoria actualizada exitosamente');
+    }
+    
+    public function eliminarCategoria($id)
+    {
+        DB::table('categorias')->where('id', $id)->delete();
+        
+        return redirect('vista-categorias')->with('success', 'Categoria eliminada exitosamente');
     }
 }
-

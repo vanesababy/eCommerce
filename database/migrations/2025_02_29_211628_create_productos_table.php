@@ -11,12 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hamburguesas', function (Blueprint $table) {
+        Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('Nombre');
+            $table->string('nombre');
             $table->string('descripcion');
+            $table->string('precio');
             $table->set('disponible', ['si', 'no']);
             $table->string('imagen');
+
+            $table->unsignedBigInteger('id_categoria'); 
+            $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

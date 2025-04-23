@@ -328,47 +328,72 @@ return [
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
+        // [
+        //     'text' => 'profile',
+        //     'url' => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url' => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Roles',
+            'url' => '/roles',
+            'icon' => 'fa fa-check',
+            'can' => 'Roles',
+            
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Usuarios',
+            'url' => '/usuarios',
+            'icon' => 'fas fa-user',
+            'can' => 'Usuarios',
         ],
         [
-            'text' => 'Menú',
-            'icon' => 'fas fa-utensils', // Ícono de comida
-            'submenu' => [
-                [
-                    'text' => 'Hamburguesas',
-                    'url' => '/vista-hamburguesas',
-                    'icon' => 'fas fa-hamburger',
-                ],
-                [
-                    'text' => 'Adiciones',
-                    'url' => 'admin/adiciones',
-                    'icon' => 'fas fa-plus-circle',
-                ],
-                [
-                    'text' => 'Bebidas',
-                    'url' => 'admin/bebidas',
-                    'icon' => 'fas fa-coffee',
-                ],
-                [
-                    'text' => 'Combos',
-                    'url' => 'admin/combos',
-                    'icon' => 'fas fa-box',
-                ],
-                [
-                    'text' => 'Acompañantes',
-                    'url' => 'admin/acompanantes',
-                    'icon' => 'fas fa-french-fries',
-                ],
-            ],
+            'text' => 'Categorias',
+            'url' => '/vista-categorias',
+            'icon' => 'fas fa-utensils',
+            'can' => 'Ver menu',
         ],
+        [
+            'text' => 'Productos',
+            'url' => '/vista-productos',
+            'icon' => 'fas fa-hamburger',
+            'can' => 'Productos',
+        ],
+        // [
+        //     'text' => 'Menú',
+        //     'icon' => 'fas fa-utensils', // Ícono de comida
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Hamburguesas',
+        //             'url' => '/vista-categorias',
+        //             'icon' => 'fas fa-hamburger',
+        //         ],
+        //         [
+        //             'text' => 'Adiciones',
+        //             'url' => 'admin/adiciones',
+        //             'icon' => 'fas fa-plus-circle',
+        //         ],
+        //         [
+        //             'text' => 'Bebidas',
+        //             'url' => 'admin/bebidas',
+        //             'icon' => 'fas fa-coffee',
+        //         ],
+        //         [
+        //             'text' => 'Combos',
+        //             'url' => 'admin/combos',
+        //             'icon' => 'fas fa-box',
+        //         ],
+        //         [
+        //             'text' => 'Acompañantes',
+        //             'url' => 'admin/acompanantes',
+        //             'icon' => 'fas fa-french-fries',
+        //         ],
+        //     ],
+        // ],
         
         ['header' => 'labels'],
         [
